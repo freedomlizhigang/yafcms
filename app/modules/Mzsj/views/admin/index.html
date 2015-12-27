@@ -1,0 +1,27 @@
+<table class="table-form">
+	<tr class="tr-header">
+		<th width="40">ID</th>
+		<th width="150">用户组</th>
+		<th width="150">用户名</th>
+		<th width="150">真实姓名</th>
+		<th width="150">电话</th>
+		<th>最后登陆时间</th>
+		<th width="150">状态</th>
+		<th>操作</th>
+	</tr>
+	<?php foreach ($adminlist as $admin):?>
+	<tr>
+		<td><?php echo $admin['adminid']?></td>
+		<td><?php echo $rolename[$admin['roleid']]['rolename'];?></td>
+		<td><?php echo $admin['adminname']?></td>
+		<td><?php echo $admin['realname']?></td>
+		<td><?php echo $admin['tel']?></td>
+		<td><?php echo date('Y-m-d H:i:s',$admin['lasttime']);?></td>
+		<td><?php echo $admin['status']?></td>
+		<td><a href="/Mzsj/Admin/editadmin/aid/<?php echo $admin['adminid'];?>">修改</a><?php if($admin['adminid'] != 1):?> | <a href="/Mzsj/Admin/deladmin/aid/<?php echo $admin['adminid'];?>" class="confirm">删除</a><?php endif;?></td>
+	</tr>
+	<?php endforeach;?>
+	<tr class="tr-btn">
+		<td colspan="8"><div class="pages"><?php echo $pages;?></div></td>
+	</tr>
+</table>

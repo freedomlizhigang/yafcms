@@ -1,0 +1,104 @@
+<form action="" class="form-box" method="post">
+	<div class="form-group">
+		<label for="catname" class="item-label">请选择栏目：<span class="color_9"> 必须填写</span></label>
+		<select name="info[catid]" id="catid" datatype="*" errormsg="栏目不能为空">
+			<option value="">请选择</option>
+			<?php foreach($catetree as $c):?>
+			<option value="<?php echo $c['catid'];?>"><?php echo $c['nbsp'];?><?php echo $c['catname'];?></option>
+			<?php endforeach;?>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="info[title]" class="item-label">文章标题：<span class="color_9"> 必须填写</span></label>
+		<input type="text" name="info[title]" class="input-text" datatype="*" errormsg="标题不能为空">
+	</div>
+	<div class="form-group">
+		<label for="info[keyword]" class="item-label">文章关键字：<span class="color_9"> 请以一个逗号 , 隔开</span></label>
+		<input type="text" name="info[keyword]" class="input-text">
+	</div>
+	<div class="form-group">
+		<label for="info[description]" class="item-label">文章描述：</label>
+		<textarea name="info[description]" cols="60" rows="4" class="input-textarea"></textarea>
+	</div>
+	<div class="form-group">
+		<label for="thumb" class="item-label">文章图片：</label>
+		<div class="clearfix">
+			<input type="text" name="thumb" id="url3" value="" class="input-text f_l">
+			<input type="button" class="btn-upload f_l ml10" id="image3" value="选择图片" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="info[content]" class="item-label">文章内容：<span class="color_9"> 必须填写</span></label>
+		<textarea name="info[content]" id="content_edit" style="width:96%" rows="20"></textarea>
+	</div>
+	<div class="form-group">
+		<label for="info[listorder]" class="item-label">排序：</label>
+		<input type="text" name="info[listorder]" value="0" class="input-sm">
+	</div>
+	<div class="form-group">
+		<label for="info[islink]" class="item-label">是否外链接：</label>
+		<input type="radio" name="info[islink]" class="input-radio" value="1"> 是
+		<input type="radio" name="info[islink]" checked="checked" class="input-radio" value="0"> 否
+	</div>
+	<div class="form-group">
+		<label for="info[url]" class="item-label">链接地址：</label>
+		<input type="text" name="info[url]" class="input-text">
+	</div>
+	<div class="form-group">
+		<label for="info[posid]" class="item-label">推荐位：</label>
+		<input type="checkbox" name="info[posid]" value="">
+	</div>
+	<div class="form-group">
+            <label for="info[inputtime]" class="item-label">添加时间：</label>
+            <input type="text" name="info[inputtime]" class="input-text laydate-icon" id="start">
+    </div>
+    <div class="form-group">
+            <label for="info[updatetime]" class="item-label">更新时间：</label>
+            <input type="text" name="info[updatetime]" class="input-text laydate-icon" id="end">
+    </div>
+	<div class="form-group">
+		<button type="submit" name="dosubmit" class="btn-success">提交</button><button type="reset" name="reset" class="btn-error">重填</button>
+	</div>
+</form>
+<script>
+	KindEditor.ready(function(K) {
+            window.editor = K.create('#content_edit', {
+                uploadJson : "<?php echo $conf['app_path'];?>Mzsj/Public/kindupload",
+                extraFileUploadParams: {
+					session_id : '<?php session_id()?>'
+                }
+       		});
+            K('#image3').click(function() {
+				editor.loadPlugin('image', function() {
+					editor.plugin.imageDialog({
+						showRemote : false,
+						imageUrl : K('#url3').val(),
+						clickFn : function(url, title, width, height, border, align) {
+							K('#url3').val(url);
+							editor.hideDialog();
+						}
+					});
+				});
+			});
+    });
+    $(".form-box").Validform({
+		tiptype:3, //在侧边弹出提示信息
+	});
+	// 时间控件
+    var start = {
+        elem: '#start',
+        format: 'YYYY-MM-DD hh:mm:ss',
+        max: '2099-06-16 23:59:59', //最大日期
+        istime: true,
+        istoday: true,
+    };
+    var end = {
+        elem: '#end',
+        format: 'YYYY-MM-DD hh:mm:ss',
+        max: '2099-06-16 23:59:59',
+        istime: true,
+        istoday: true,
+    };
+    laydate(start);
+    laydate(end);
+</script>

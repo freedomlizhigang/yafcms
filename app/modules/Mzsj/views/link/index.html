@@ -1,0 +1,31 @@
+<form action="/Mzsj/Link/dellink/" method="get">
+<table class="table-form">
+	<tr class="tr-header">
+		<th width="1"><input type="checkbox" value="" class="checkall"></th>
+		<th width="40">ID</th>
+		<th width="60">排序</th>
+		<th width="150">名称</th>
+		<th width="300">url</th>
+		<th width="150">开始时间</th>
+		<th width="150">结束时间</th>
+		<th>操作</th>
+	</tr>
+	<?php foreach ($linklist as $link):?>
+	<tr>
+		<td><input type="checkbox" name="linkids[]" value="<?php echo $link['linkid']?>" class="subcheck" ></td>
+		<td><?php echo $link['linkid']?></td>
+		<td><?php echo $link['listorder']?></td>
+		<td><?php echo $link['name']?></td>
+		<td><?php echo $link['url']?></td>
+		<td><?php echo date('Y-m-d',$link['starttime']);?></td>
+		<td><?php echo date('Y-m-d',$link['endtime']);?></td>
+		<td><a href="/Mzsj/link/editlink/lid/<?php echo $link['linkid'];?>">修改</a> | <a href="/Mzsj/link/dellink/lid/<?php echo $link['linkid'];?>" class="confirm">删除</a></td>
+	</tr>
+	<?php endforeach;?>
+	<tr class="tr-btn">
+		<td><input type="checkbox" value="" class="checkall"></td>
+		<td colspan="2"><input type="submit" value="删除" class="btn-del confirm" /></td>
+		<td colspan="5"><div class="pages"><?php echo $pages;?></div></td>
+	</tr>
+</table>
+</form>

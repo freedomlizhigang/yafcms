@@ -1,0 +1,86 @@
+<form action="" class="form-box" method="post">
+        <div class="form-group">
+                <label for="info[name]" class="item-label">名称：<span class="color_9"> 必须填写</span></label>
+                <input type="text" name="info[name]" class="input-text"  datatype="*1-10">
+        </div>
+        <div class="form-group">
+                <label for="info[url]" class="item-label">Url：<span class="color_9"> 必须填写</span></label>
+                <input type="text" name="info[url]" class="input-text" datatype="url">
+        </div>
+        <div class="form-group">
+                <label for="info[image]" class="item-label">Logo：</label>
+                <div class="clearfix">
+                    <input type="text" name="info[image]" id="url3" value="" class="input-text f_l">
+                    <input type="button" class="btn-upload f_l ml10" id="image3" value="选择图片" />
+                </div>
+        </div>
+        <div class="form-group">
+                <label for="info[starttime]" class="item-label">开始时间：</label>
+                <input type="text" name="info[starttime]" class="input-text laydate-icon" id="start">
+        </div>
+        <div class="form-group">
+                <label for="info[endtime]" class="item-label">结束时间：</label>
+                <input type="text" name="info[endtime]" class="input-text laydate-icon" id="end">
+        </div>
+        <div class="form-group">
+                <label for="info[listorder]" class="item-label">排序：</label>
+                <input type="text" name="info[listorder]" class="input-text input-sm" value="0">
+        </div>
+        <div class="form-group">
+                <button type="submit" name="dosubmit" class="btn-success">提交</button><button type="reset" name="reset" class="btn-error">重填</button>
+        </div>
+</form>
+<script>
+    $(function(){
+        KindEditor.ready(function(K) {
+            window.editor = K.editor({
+                allowFileManager : false,
+                uploadJson : "<?php echo $conf['app_path'];?>Mzsj/Public/kindupload",
+                extraFileUploadParams: {
+                    session_id : '<?php session_id()?>'
+                }
+            });
+            K('#image3').click(function() {
+                editor.loadPlugin('image', function() {
+                    editor.plugin.imageDialog({
+                        showRemote : false,
+                        imageUrl : K('#url3').val(),
+                        clickFn : function(url, title, width, height, border, align) {
+                            K('#url3').val(url);
+                            editor.hideDialog();
+                        }
+                    });
+                });
+            });
+        });
+        $(".form-box").Validform({
+                tiptype:3, //在侧边弹出提示信息
+        });
+        // 时间控件
+        var start = {
+            elem: '#start',
+            format: 'YYYY-MM-DD',
+            min: laydate.now(), //设定最小日期为当前日期
+            max: '2099-06-16 23:59:59', //最大日期
+            istime: true,
+            istoday: false,
+            choose: function(datas){
+                 end.min = datas; //开始日选好后，重置结束日的最小日期
+                 end.start = datas //将结束日的初始值设定为开始日
+            }
+        };
+        var end = {
+            elem: '#end',
+            format: 'YYYY-MM-DD',
+            min: laydate.now(),
+            max: '2099-06-16 23:59:59',
+            istime: true,
+            istoday: false,
+            choose: function(datas){
+                start.max = datas; //结束日选好后，重置开始日的最大日期
+            }
+        };
+        laydate(start);
+        laydate(end);
+    });
+</script>

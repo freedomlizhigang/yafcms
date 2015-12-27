@@ -1,0 +1,102 @@
+<form action="" class="form-box" method="post">
+	<div class="form-group">
+		<label for="info[parentid]" class="item-label">父栏目：<span class="color_9"> 必须填写</span></label>
+		<select name="info[parentid]" id="parentid">
+			<option value="">请选择</option>
+			<?php foreach ($catetree as $v):?>
+			<option value="<?php echo $v['catid'];?>"<?php if($v['catid'] == $cateinfo['parentid']):?> selected="selected"<?php endif;?>><?php echo $v['nbsp'].$v['catname'];?></option>
+			<?php endforeach;?>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="info[catname]" class="item-label">栏目名：<span class="color_9"> 必须填写</span></label>
+		<input type="text" name="info[catname]" value="<?php echo $cateinfo['catname'];?>" class="input-text" datatype="s1-16" errormsg="栏目名称至少1个字符,最多16个字符！">
+	</div>
+	<div class="form-group">
+		<label for="info[catdir]" class="item-label">栏目目录：<span class="color_9"> 必须填写</span></label>
+		<input type="text" name="info[catdir]" value="<?php echo $cateinfo['catdir'];?>" class="input-text" datatype="s1-16" errormsg="栏目目录至少1个字符,最多16个字符！">
+	</div>
+	<div class="form-group">
+		<label for="info[keyword]" class="item-label">栏目关键字：</label>
+		<input type="text" name="info[keyword]" value="<?php echo $cateinfo['keyword'];?>" class="input-text">
+	</div>
+	<div class="form-group">
+		<label for="info[description]" class="item-label">描述：</label>
+		<textarea name="info[description]" cols="60" rows="4" class="input-textarea"><?php echo $cateinfo['description'];?></textarea>
+	</div>
+	<div class="form-group">
+		<label for="info[image]" class="item-label">栏目图片：</label>
+		<div class="clearfix">
+			<input type="text" name="info[image]" id="url3" value="<?php echo $cateinfo['image'];?>" class="input-text f_l">
+			<input type="button" class="btn-upload f_l ml10" id="image3" value="选择图片" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="info[content]" class="item-label">内容：</label>
+		<textarea name="info[content]" id="content_edit" style="width:96%" rows="20"><?php echo $cateinfo['content'];?></textarea>
+	</div>
+	<div class="form-group">
+		<label for="info[listorder]" class="item-label">排序：</label>
+		<input type="text" name="info[listorder]" value="<?php echo $cateinfo['listorder'];?>" class="input-text input-sm">
+	</div>
+	<div class="form-group">
+		<label for="info[ismenu]" class="item-label">是否在导航显示：</label>
+		<input type="radio" name="info[ismenu]"<?php if($cateinfo['ismenu'] == 1):?> checked="checked"<?php endif;?> class="input-radio" value="1"> 显示
+		<input type="radio" name="info[ismenu]"<?php if($cateinfo['ismenu'] == 0):?> checked="checked"<?php endif;?> class="input-radio" value="0"> 不显示
+	</div>
+	<div class="form-group">
+		<label for="info[islink]" class="item-label">是否外部链接：</label>
+		<input type="radio" name="info[islink]"<?php if($cateinfo['islink'] == 1):?> checked="checked"<?php endif;?> class="input-radio" value="1"> 是
+		<input type="radio" name="info[islink]"<?php if($cateinfo['islink'] == 0):?> checked="checked"<?php endif;?> class="input-radio" value="0"> 否
+	</div>
+	<div class="form-group">
+		<label for="info[url]" class="item-label">外链接地址：</label>
+		<input type="text" name="info[url]" value="<?php echo $cateinfo['url'];?>" class="input-text">
+	</div>
+	<div class="form-group">
+		<label for="info[ispage]" class="item-label">是否单网页：</label>
+		<input type="radio" name="info[ispage]"<?php if($cateinfo['ispage'] == 1):?> checked="checked"<?php endif;?> class="input-radio" value="1"> 是
+		<input type="radio" name="info[ispage]"<?php if($cateinfo['ispage'] == 0):?> checked="checked"<?php endif;?> class="input-radio" value="0"> 否
+	</div>
+	<div class="form-group">
+		<label for="info[shenhe]" class="item-label">文章是否需要审核：</label>
+		<input type="radio" name="info[shenhe]"<?php if($cateinfo['shenhe'] == 1):?> checked="checked"<?php endif;?> class="input-radio" value="1"> 是
+		<input type="radio" name="info[shenhe]"<?php if($cateinfo['shenhe'] == 0):?> checked="checked"<?php endif;?> class="input-radio" value="0"> 否
+	</div>
+	<div class="form-group">
+		<label for="info[cattpl]" class="item-label">栏目模板：<span class="color_9"> 如果为单网页，请修改为page</span></label>
+		<input type="text" name="info[cattpl]" value="<?php echo $cateinfo['cattpl'];?>" class="input-text">
+	</div>
+	<div class="form-group">
+		<label for="info[arttpl]" class="item-label">文章模板：</label>
+		<input type="text" name="info[arttpl]" value="<?php echo $cateinfo['arttpl'];?>" class="input-text">
+	</div>
+	<div class="form-group">
+		<button type="submit" name="dosubmit" class="btn-success">提交</button><button type="reset" name="reset" class="btn-error">重填</button>
+	</div>
+</form>
+<script>
+	KindEditor.ready(function(K) {
+            window.editor = K.create('#content_edit', {
+                uploadJson : "<?php echo $conf['app_path'];?>Mzsj/Public/kindupload",
+                extraFileUploadParams: {
+					session_id : '<?php session_id()?>'
+                }
+       		});
+            K('#image3').click(function() {
+				editor.loadPlugin('image', function() {
+					editor.plugin.imageDialog({
+						showRemote : false,
+						imageUrl : K('#url3').val(),
+						clickFn : function(url, title, width, height, border, align) {
+							K('#url3').val(url);
+							editor.hideDialog();
+						}
+					});
+				});
+			});
+    });
+    $(".form-box").Validform({
+		tiptype:3, //在侧边弹出提示信息
+	});
+</script>

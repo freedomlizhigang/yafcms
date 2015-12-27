@@ -1,0 +1,109 @@
+@charset "utf-8";
+/*作者(Author): 李潇喃    Website: www.muzisheji.com   QQ: 854378082*/
+*, *:before, *:after {box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, audio, canvas, details, figcaption, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, summary, time, video {border:0;background:transparent;margin:0;padding:0;}
+article, aside, dialog, figure, footer, header, hgroup, nav, section, blockquote {display:block;}
+nav ,ul {list-style:none;}
+ol {list-style:decimal;}
+blockquote:before, blockquote:after, q:before, q:after {content:none;}
+table {border-collapse:collapse;border-spacing:0;}
+hr {display:block;height:0px;border:0;border-top:1px solid #ccc;overflow:hidden; line-height:0px;}
+input ,select ,a img {vertical-align:middle;}
+.clearfix:after {content: ""; clear: both; height: 0px; overflow: hidden; display:block; visibility: hidden;}
+.clearfix { !zoom:1;}
+.f_l {float: left;}
+.f_r {float: right;}
+.overh {overflow: hidden;}
+.h_img {line-height: 0px; font-size: 0px;}
+a {color: #333; text-decoration: none;}
+a:hover {text-decoration: none;}
+html {height: 100%; font-size: 16px;}
+body {font-family:"微软雅黑","宋体","Arial","Verdana","sans-serif"; font-size: 1em; line-height: 2em; color: #343434; background: #F6F6F6;height:100%; padding: 1em;}
+body.body_box {overflow: hidden; padding: 0;}
+/*top*/
+.top {height: 50px; line-height: 50px; background-color: #383838; color: #FFF; position: relative; top: 0; left: 0; width: 100%; z-index: 9999;}
+.logo {font-weight: normal; padding-left: 15px; float: left; width: 200px;}
+.top a {color: #FFF;}
+.menu { float: left;}
+.menu li {float: left; width: 80px; font-size: 1.2em; font-weight:normal; text-align: center;}
+.menu li a {display: block; cursor: pointer;}
+.menu li a:hover {background: #656565;}
+.menu li a.active {background: #86DB00;}
+.userinfo {float: right; margin-right: 10px; font-size: 0.8em; color:#eee;}
+.userinfo a {color: #ccc;}
+.userinfo a:hover {color: #FFF;}
+/*end top start left*/
+.leftbg {width: 200px; background-color: #2B2B2B; position: absolute; top: 0px; bottom: 0em; z-index: -1;}
+.left {width: 200px; float: left; padding-left: 15px; padding-top: 20px; position: relative; color: #F1F1F1;}
+.left a {color: #F1F1F1;}
+.left_h3 {font-size: 1em; cursor: pointer; font-weight: normal;}
+.left_h3 .icon {background: url("../../images/mzsj/bg_icon.png") no-repeat scroll -75px 0px transparent;float: left; margin: 10px 6px 0px 0px;width: 16px;height: 16px;}
+.left_h3 .icon_hover {background: url("bg_icon.png") no-repeat scroll -100px 0px transparent;float: left; margin: 10px 6px 0px 0px;width: 16px;height: 16px;}
+.left_list {font-size: 0.9em; margin: 5px 0; text-indent: 1.45em;}
+.left_list li {margin-bottom: 2px;}
+.left_list li:hover {background: #7C7C7C;}
+.left_list li.active {background: #F6F6F6;}
+.left_list a {display: block;cursor: pointer;}
+.left_list a.active { color: #222; background: url("../../images/mzsj/subnav_current.png") no-repeat scroll 165px 12px #F6F6F6;}
+/*end left start main*/
+.right {margin-left: 200px; padding-bottom:2.5em;}
+.main_title {font-weight: normal; font-size: 1.6em; color: #456; font-weight: 400;}
+.right_con {margin-top: .5em;}
+.copyright {height: 30px; border-top: #ddd solid 1px; position: absolute; bottom: 1px; left: 210px; right: 10px; font-size: 0.8em; line-height: 30px;}
+/*end main*/
+/*common*/
+.color_f60 {color: #ff6600;}
+.form-box {margin-top: 10px;}
+.form-group {margin-bottom: 10px;}
+.item-label {display: block;margin-right: 5px;height: 30px;line-height: 30px;font-weight: bold;}
+.input-text {height: 2em; line-height: 2em; width: 350px; border: #ddd solid 1px; background-color: #FFF; padding: 0 0.5em; margin-bottom: 0.5em;}
+.input-textarea { line-height: 2em; border: #ddd solid 1px; background-color: #FFF; padding: 0 0.5em; margin-bottom: 0.5em;}
+.input-sm {width: 100px;}
+.btn-success {background-color: #4BBD00;padding: 10px 50px;color: #FFF; border:none; font-weight: bold; margin: 0 5px; cursor: pointer;}
+.btn-error {background-color: #CC3900;padding: 10px 50px;color: #FFF; border:none; font-weight: bold; margin: 0 5px; cursor: pointer;}
+.btn-success:hover {background: #4CDB00;}
+.btn-error:hover {background: #FF2610}
+.btn-del {background-color: #bcbcbc; border:none; padding: 0.3em 1em; cursor: pointer;}
+.btn-del:hover {background: #aaa;}
+.table-form {width: 100%; margin-top: 1em; background: #FEFEFE;}
+.tr-header th ,.table-form td {height: 2.6em; line-height: 2.6em; text-align: left; padding: 0 1em;}
+.table-form tr:nth-child(2n+1) {background: #F2F2F2;}
+.table-form tr:hover {background: #ddd;}
+.table-form tr.tr-header {background: #444; color: #FFF; font-size: 1em; text-align: left;}
+.table-form tr.tr-btn {background: #F6F6F6; padding-top: 1em; height: 3.6em;}
+.table-form tr.tr-btn td {padding: 0;}
+.table-form a:hover {color: green; text-decoration: underline;}
+.addsub {background: url("../../images/mzsj/bg_icon.png") no-repeat scroll 0px 0px transparent; margin: 10px 0px 0px 10px;width: 16px;height: 16px; display: inline-block; float: left;}
+.btn-group {margin-left: 1em;}
+.btn-green {color: #4BBD00; font-weight: bold; margin-right: 1em; font-size: 1.2em;}
+.btn-green:hover {color: #4CDB00;}
+.color_green {color: green;}
+.color_red {color: red;}
+.color_9 {color: #999; font-size: 0.86em;}
+.btn-upload { height: 28px; line-height: 22px; cursor: pointer;}
+.ml10 {margin-left: 10px;}
+/*end common*/
+/*权限*/
+.priv_h3 {background: #666; color: #FFF; margin-top: 1em; margin-bottom:0.4em;}
+.priv_h4 {background: #ddd; margin: 0.3em 0;}
+.priv_h4_2 {background: #ddd; font-weight: normal; margin: 0.5em 0;}
+/*登陆*/
+.body-login {background-color: #333;}
+.box-login {width:270px; margin: 5em auto 0; background: #FFF; padding: 1em;overflow: hidden; border-radius: 5px;}
+.h1-login {font-size: 0; margin-bottom: 10px;}
+.h1-login img {max-width: 100%; height: auto;}
+.box-login .item-label {font-size: 0.8em;}
+.box-login .input-text {width: 100%; border-color: #ccc;}
+.box-login .btn-success ,.box-login .btn-error {padding: 5px 20px; font-weight: normal; margin-left: 0px; margin-right: 20px;}
+.box-login .input-verify {width: 100px;}
+.verifyclick {cursor: pointer;}
+.config .item-label {color: #666; font-weight: normal;}
+.config p {color: #333;}
+/**/
+.subcat {margin-top: 1em; font-size: 1.2em; padding:0.2em 0; color: #FFF;}
+/*pages*/
+.pages a ,.pages span {background-color: #DDDDDD; padding: 0.3em 0.8em; margin: 0 0.5em 0 0;}
+.pages span {background-color: #86DB00; color: #FFF;}
+/*上传及富文本工具*/
+.ke-dialog-content * ,.ke-dialog-content *:after ,.ke-dialog-content *:before {box-sizing: content-box; -webkit-box-sizing: content-box; -moz-box-sizing: content-box;}
+.ke-button-common.ke-button {padding: 0 10px;}
