@@ -2,16 +2,14 @@
 
 $dbconfig = array (
 	'default' => array (
-		'hostname' => '192.168.10.40',
+		'driver' => 'mysql',
+		'host' => '127.0.0.1',
 		'port' => 3306,
-		'database' => 'yafcms',
+		'database' => 'xycmf',
 		'username' => 'root',
 		'password' => 'root',
-		'tablepre' => 'mzsj_',
+		'prefix' => 'li_',
 		'charset' => 'utf8',
-		'type' => 'mysql',
-		'debug' => true,
-		'pcontent'=> 0,
-		'autoconnect' => 0
-		),
+		'collation' => 'utf8_unicode_ci'
+	)
 );

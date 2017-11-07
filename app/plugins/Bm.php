@@ -20,7 +20,7 @@ class BmPlugin extends Yaf\Plugin_Abstract {
 	}
 	public function dispatchLoopShutdown(Yaf\Request_Abstract $request, Yaf\Response_Abstract $response) {
 		$this->bm->mark('total_time_end');
-		// $pro = new \Profiler($this->bm);
-		// $pro->run();
+		$pro = new \Profiler($this->bm);
+		$pro->run();
 	}
 }

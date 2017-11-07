@@ -1,0 +1,22 @@
+{
+    "name": "smz/lyaf",
+    "description": "The Yaf Api Framework.",
+    "keywords": ["framework", "yaf", "api"],
+    "license": "MIT",
+    "type": "project",
+	"require": {
+		"php": ">=7.0",
+        "illuminate/database": "*",
+        "doctrine/dbal":"*",
+        "illuminate/events":"*",
+        "yunhack/php-validator":"*"
+	},
+    "prefer-stable": true,
+    "optimize-autoloader": true,
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}

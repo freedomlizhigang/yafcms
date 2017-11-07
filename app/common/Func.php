@@ -3,6 +3,30 @@
 * 公用函数文件
 */
 
+// 断点调试
+function ddl($data = '')
+{
+	var_dump($data);
+	exit;
+}
+
+// form字段的错误提示
+function form_error($field = '')
+{	
+	$errors = Yaf\Registry::get('session')->flash('validator_errors');
+	if (is_array($errors)) {
+		echo "<div class='form_error'>".$errors[$field][0]."</div>";
+	}
+}
+// form字段的填充信息
+function form_old($field = '')
+{
+	$errors = Yaf\Registry::get('session')->flash('form_old');
+	if (is_array($errors)) {
+		echo $errors[$field];
+	}
+}
+
 /*
 所有输入去除前后空格
 */

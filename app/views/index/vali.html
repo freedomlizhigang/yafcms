@@ -1,0 +1,14 @@
+<html>
+ <head>
+   <title>Hello World</title>
+ </head>
+ <body>
+  <form action="/index/vali" method="post">
+    <p><input type="text" name="data[username]" value="<?php form_old('username');?>" placeholder="用户名"></p>
+    <?php form_error('username');?>
+    <p><input type="text" name="data[password]" value="<?php form_old('password');?>" placeholder="密码"></p>
+    <?php form_error('password');?>
+    <p><input type="submit" value="提交"></p>
+  </form>
+ </body>
+</html>
